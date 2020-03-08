@@ -1,0 +1,850 @@
+
+MY-WIRELSS-SPEAKER.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000040e  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000002  00800060  0000040e  000004a2  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000001  00800062  00800062  000004a4  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000004a4  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000004d4  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000138  00000000  00000000  00000510  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001794  00000000  00000000  00000648  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000a81  00000000  00000000  00001ddc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000b33  00000000  00000000  0000285d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000310  00000000  00000000  00003390  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000007d6  00000000  00000000  000036a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000cad  00000000  00000000  00003e76  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000e8  00000000  00000000  00004b23  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	39 c0       	rjmp	.+114    	; 0x86 <__vector_9>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	ee e0       	ldi	r30, 0x0E	; 14
+  3a:	f4 e0       	ldi	r31, 0x04	; 4
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a2 36       	cpi	r26, 0x62	; 98
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+
+00000048 <__do_clear_bss>:
+  48:	20 e0       	ldi	r18, 0x00	; 0
+  4a:	a2 e6       	ldi	r26, 0x62	; 98
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a3 36       	cpi	r26, 0x63	; 99
+  54:	b2 07       	cpc	r27, r18
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	2a d0       	rcall	.+84     	; 0xae <main>
+  5a:	d7 c1       	rjmp	.+942    	; 0x40a <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <adc_init>:
+
+// INIT WITH INTERRUPT
+void adc_init_int( uint8_t adclk , uint8_t adref ){
+	
+	ADMUX  = ( adref << REFS0 ) ;                    // SET MUX REGISTER , ADC0 IS SELECTED BY DEFAULT
+	ADCSRA = ( adclk << ADPS0 ) | ( 1 << ADEN ) | ( 1 << ADIE ) ;
+  5e:	62 95       	swap	r22
+  60:	66 0f       	add	r22, r22
+  62:	66 0f       	add	r22, r22
+  64:	60 7c       	andi	r22, 0xC0	; 192
+  66:	67 b9       	out	0x07, r22	; 7
+  68:	80 68       	ori	r24, 0x80	; 128
+  6a:	86 b9       	out	0x06, r24	; 6
+  6c:	08 95       	ret
+
+0000006e <adc_channel_select>:
+
+// SELECTS CHANNEL 
+
+void adc_channel_select( uint8_t adc_channel ){
+	
+	ADMUX|= ( adc_channel << MUX0 ) ;
+  6e:	97 b1       	in	r25, 0x07	; 7
+  70:	89 2b       	or	r24, r25
+  72:	87 b9       	out	0x07, r24	; 7
+  74:	08 95       	ret
+
+00000076 <adc_sample>:
+
+uint16_t adc_sample( void ){
+	
+	uint16_t converresult ; 
+	
+	ADCSRA |= ( 1 << ADSC ) ;
+  76:	36 9a       	sbi	0x06, 6	; 6
+	while ( ADCSRA & ( 1 << ADSC ) );
+  78:	36 99       	sbic	0x06, 6	; 6
+  7a:	fe cf       	rjmp	.-4      	; 0x78 <adc_sample+0x2>
+	
+	converresult = ADCL ;
+  7c:	84 b1       	in	r24, 0x04	; 4
+	converresult|= (ADCH << 8 ) ;
+  7e:	25 b1       	in	r18, 0x05	; 5
+		
+	return converresult ; 
+  80:	90 e0       	ldi	r25, 0x00	; 0
+	
+}
+  82:	92 2b       	or	r25, r18
+  84:	08 95       	ret
+
+00000086 <__vector_9>:
+// PROTOS
+
+static __inline__ void timer0_init( void );
+
+
+ISR( TIMER0_OVF_vect ){
+  86:	1f 92       	push	r1
+  88:	0f 92       	push	r0
+  8a:	0f b6       	in	r0, 0x3f	; 63
+  8c:	0f 92       	push	r0
+  8e:	11 24       	eor	r1, r1
+  90:	8f 93       	push	r24
+	
+	TIMER0_STOP ;
+  92:	13 be       	out	0x33, r1	; 51
+	TIMER0_RELOAD( PRESCALEER_VAL );
+  94:	83 e8       	ldi	r24, 0x83	; 131
+  96:	82 bf       	out	0x32, r24	; 50
+	timer_flag = 1 ;
+  98:	81 e0       	ldi	r24, 0x01	; 1
+  9a:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__data_end>
+	TIMER0_START; 
+  9e:	82 e0       	ldi	r24, 0x02	; 2
+  a0:	83 bf       	out	0x33, r24	; 51
+	
+	
+}
+  a2:	8f 91       	pop	r24
+  a4:	0f 90       	pop	r0
+  a6:	0f be       	out	0x3f, r0	; 63
+  a8:	0f 90       	pop	r0
+  aa:	1f 90       	pop	r1
+  ac:	18 95       	reti
+
+000000ae <main>:
+
+int main(void){
+  ae:	cf 93       	push	r28
+  b0:	df 93       	push	r29
+  b2:	cd b7       	in	r28, 0x3d	; 61
+  b4:	de b7       	in	r29, 0x3e	; 62
+  b6:	2e 97       	sbiw	r28, 0x0e	; 14
+  b8:	0f b6       	in	r0, 0x3f	; 63
+  ba:	f8 94       	cli
+  bc:	de bf       	out	0x3e, r29	; 62
+  be:	0f be       	out	0x3f, r0	; 63
+  c0:	cd bf       	out	0x3d, r28	; 61
+	
+	uint8_t data_packet[3];
+	uint16_t adc_val  ; 
+	
+	data_packet[0]= 0 ;
+  c2:	19 82       	std	Y+1, r1	; 0x01
+	data_packet[1]= 0 ;
+  c4:	1a 82       	std	Y+2, r1	; 0x02
+	data_packet[2]= 0 ; 
+  c6:	1b 82       	std	Y+3, r1	; 0x03
+	
+	adc_val = 0 ;
+	 
+    uart_init();
+  c8:	69 d1       	rcall	.+722    	; 0x39c <uart_init>
+	spi_master_init( SCK_4MHZ );
+  ca:	84 e0       	ldi	r24, 0x04	; 4
+  cc:	61 d0       	rcall	.+194    	; 0x190 <spi_master_init>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  ce:	2f ef       	ldi	r18, 0xFF	; 255
+  d0:	81 ee       	ldi	r24, 0xE1	; 225
+  d2:	94 e0       	ldi	r25, 0x04	; 4
+  d4:	21 50       	subi	r18, 0x01	; 1
+  d6:	80 40       	sbci	r24, 0x00	; 0
+  d8:	90 40       	sbci	r25, 0x00	; 0
+  da:	e1 f7       	brne	.-8      	; 0xd4 <main+0x26>
+  dc:	00 c0       	rjmp	.+0      	; 0xde <main+0x30>
+  de:	00 00       	nop
+	_delay_ms(200);
+	CE_INIT ;
+  e0:	a3 9a       	sbi	0x14, 3	; 20
+  e2:	ab 98       	cbi	0x15, 3	; 21
+	CS_INIT ;
+  e4:	a2 9a       	sbi	0x14, 2	; 20
+  e6:	aa 9a       	sbi	0x15, 2	; 21
+	IRQ_INIT ; 
+  e8:	a5 98       	cbi	0x14, 5	; 20
+  ea:	ad 98       	cbi	0x15, 5	; 21
+	adc_init( ADCLK_125K , AVCC_REF );            // USE AVCC AS REFERENCE , 125KHZ ADC CLOCK 
+  ec:	61 e0       	ldi	r22, 0x01	; 1
+  ee:	86 e0       	ldi	r24, 0x06	; 6
+  f0:	b6 df       	rcall	.-148    	; 0x5e <adc_init>
+	adc_channel_select( 0 );                       // SELECT CHANNEL 0
+  f2:	80 e0       	ldi	r24, 0x00	; 0
+  f4:	bc df       	rcall	.-136    	; 0x6e <adc_channel_select>
+	adc_sample();								  // DO THE FIRST SAMPLING 
+  f6:	bf df       	rcall	.-130    	; 0x76 <adc_sample>
+	
+	nrf_config my_config ; 
+	
+	// Configuration 
+	
+	my_config.arc = 0 ;
+  f8:	1d 86       	std	Y+13, r1	; 0x0d
+	my_config.ard = 10 ;
+  fa:	8a e0       	ldi	r24, 0x0A	; 10
+  fc:	8c 87       	std	Y+12, r24	; 0x0c
+	my_config.cont_wave_transmit = NO_WAVE ;
+  fe:	1c 82       	std	Y+4, r1	; 0x04
+	my_config.crc = CRC_1BYTE ;
+ 100:	68 94       	set
+ 102:	cc 24       	eor	r12, r12
+ 104:	c1 f8       	bld	r12, 1
+ 106:	c8 86       	std	Y+8, r12	; 0x08
+	my_config.data_rate = RATE_1MBPS ;
+ 108:	1d 82       	std	Y+5, r1	; 0x05
+	my_config.int_mask = TX_INT ;
+ 10a:	95 e0       	ldi	r25, 0x05	; 5
+ 10c:	9f 83       	std	Y+7, r25	; 0x07
+	my_config.module_state = POWER_UP ;
+ 10e:	dd 24       	eor	r13, r13
+ 110:	d3 94       	inc	r13
+ 112:	da 86       	std	Y+10, r13	; 0x0a
+	my_config.txrx_mode = TX ;
+ 114:	19 86       	std	Y+9, r1	; 0x09
+	my_config.transmit_power = POWER_0DBM ;
+ 116:	93 e0       	ldi	r25, 0x03	; 3
+ 118:	9e 83       	std	Y+6, r25	; 0x06
+	my_config.feature = NO_DYNPL_NO_AACK_CMD ;
+ 11a:	db 86       	std	Y+11, r13	; 0x0b
+	my_config.rf_ch = 10 ;
+ 11c:	8e 87       	std	Y+14, r24	; 0x0e
+	
+	
+	nrf_configure ( my_config );                 // CONFIGURE THE NRF24L01+
+ 11e:	e1 2c       	mov	r14, r1
+ 120:	f1 2c       	mov	r15, r1
+ 122:	03 e0       	ldi	r16, 0x03	; 3
+ 124:	15 e0       	ldi	r17, 0x05	; 5
+ 126:	22 e0       	ldi	r18, 0x02	; 2
+ 128:	30 e0       	ldi	r19, 0x00	; 0
+ 12a:	41 e0       	ldi	r20, 0x01	; 1
+ 12c:	51 e0       	ldi	r21, 0x01	; 1
+ 12e:	6a e0       	ldi	r22, 0x0A	; 10
+ 130:	70 e0       	ldi	r23, 0x00	; 0
+ 132:	55 d0       	rcall	.+170    	; 0x1de <nrf_configure>
+	
+	set_addr(PTX , 0X8723435212 , 5 );           // SET TX BYTE , ADDRESS WIDTH 5 BYTE , 0X8723435212 ADDRESS
+ 134:	0f 2e       	mov	r0, r31
+ 136:	f5 e0       	ldi	r31, 0x05	; 5
+ 138:	ef 2e       	mov	r14, r31
+ 13a:	f0 2d       	mov	r31, r0
+ 13c:	02 e1       	ldi	r16, 0x12	; 18
+ 13e:	12 e5       	ldi	r17, 0x52	; 82
+ 140:	23 e4       	ldi	r18, 0x43	; 67
+ 142:	33 e2       	ldi	r19, 0x23	; 35
+ 144:	47 e8       	ldi	r20, 0x87	; 135
+ 146:	50 e0       	ldi	r21, 0x00	; 0
+ 148:	60 e0       	ldi	r22, 0x00	; 0
+ 14a:	70 e0       	ldi	r23, 0x00	; 0
+ 14c:	80 e1       	ldi	r24, 0x10	; 16
+ 14e:	9b d0       	rcall	.+310    	; 0x286 <set_addr>
+	
+	nrf_power_up();	
+ 150:	e8 d0       	rcall	.+464    	; 0x322 <nrf_power_up>
+*/
+
+
+static __inline__ void timer0_init( void ){
+	
+	TIMSK = ( 1 << TOIE0 );
+ 152:	d9 be       	out	0x39, r13	; 57
+	TCCR0 = ( PRESCALER_8KHZ << CS00 ) ;
+ 154:	c3 be       	out	0x33, r12	; 51
+	TCNT0 = 0XFF - PRESCALEER_VAL + 1 ;
+ 156:	83 e8       	ldi	r24, 0x83	; 131
+ 158:	82 bf       	out	0x32, r24	; 50
+	
+	nrf_power_up();	
+	
+	
+	timer0_init();
+	sei();
+ 15a:	78 94       	sei
+	
+	
+    while (1) 
+    {
+		
+		if ( timer_flag ){
+ 15c:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__data_end>
+ 160:	88 23       	and	r24, r24
+ 162:	e1 f3       	breq	.-8      	; 0x15c <main+0xae>
+		uart_print("1");	
+ 164:	80 e6       	ldi	r24, 0x60	; 96
+ 166:	90 e0       	ldi	r25, 0x00	; 0
+ 168:	24 d1       	rcall	.+584    	; 0x3b2 <uart_print>
+		adc_val = adc_sample();
+ 16a:	85 df       	rcall	.-246    	; 0x76 <adc_sample>
+		data_packet[0] = ( adc_val & 0B11111111 );
+ 16c:	89 83       	std	Y+1, r24	; 0x01
+		data_packet[1] = ( adc_val >> 8 );
+ 16e:	9a 83       	std	Y+2, r25	; 0x02
+		++data_packet[2];
+ 170:	8b 81       	ldd	r24, Y+3	; 0x03
+ 172:	8f 5f       	subi	r24, 0xFF	; 255
+ 174:	8b 83       	std	Y+3, r24	; 0x03
+		nrf_tx_write( data_packet , 3 , 0 ) ;               
+ 176:	40 e0       	ldi	r20, 0x00	; 0
+ 178:	63 e0       	ldi	r22, 0x03	; 3
+ 17a:	ce 01       	movw	r24, r28
+ 17c:	01 96       	adiw	r24, 0x01	; 1
+ 17e:	e2 d0       	rcall	.+452    	; 0x344 <nrf_tx_write>
+		IRQ_POLL ; 
+ 180:	9d 99       	sbic	0x13, 5	; 19
+ 182:	fe cf       	rjmp	.-4      	; 0x180 <main+0xd2>
+		CLEAR_TX_INT ;	
+ 184:	67 e0       	ldi	r22, 0x07	; 7
+ 186:	80 e2       	ldi	r24, 0x20	; 32
+ 188:	1a d0       	rcall	.+52     	; 0x1be <w_register>
+		timer_flag = 0 ;
+ 18a:	10 92 62 00 	sts	0x0062, r1	; 0x800062 <__data_end>
+ 18e:	e6 cf       	rjmp	.-52     	; 0x15c <main+0xae>
+
+00000190 <spi_master_init>:
+
+void spi_slave_init ( unsigned char clk_freq ){
+	
+	SPCR = ( 1 << SPE )|( clk_freq & 0b11 ) ; // SET SPR0 SPR1 ACCORDING TO CLK_FREQ AND SET SPE
+	
+	SPSR = ( clk_freq >> 2 ) ;  // SET OR CLEAR SPI2X
+ 190:	97 b3       	in	r25, 0x17	; 23
+ 192:	9c 62       	ori	r25, 0x2C	; 44
+ 194:	97 bb       	out	0x17, r25	; 23
+ 196:	bc 98       	cbi	0x17, 4	; 23
+ 198:	98 2f       	mov	r25, r24
+ 19a:	93 70       	andi	r25, 0x03	; 3
+ 19c:	90 65       	ori	r25, 0x50	; 80
+ 19e:	9d b9       	out	0x0d, r25	; 13
+ 1a0:	86 95       	lsr	r24
+ 1a2:	86 95       	lsr	r24
+ 1a4:	8e b9       	out	0x0e, r24	; 14
+ 1a6:	08 95       	ret
+
+000001a8 <spi_master_write>:
+
+
+
+unsigned char spi_master_write ( unsigned char spi_byte  ){
+	
+	SPDR = spi_byte ;
+ 1a8:	8f b9       	out	0x0f, r24	; 15
+	
+	while ( !(SPSR & ( 1 << SPIF) ) ) ;
+ 1aa:	77 9b       	sbis	0x0e, 7	; 14
+ 1ac:	fe cf       	rjmp	.-4      	; 0x1aa <spi_master_write+0x2>
+	
+	return SPDR ;
+ 1ae:	8f b1       	in	r24, 0x0f	; 15
+}
+ 1b0:	08 95       	ret
+
+000001b2 <spi_master_receive>:
+// if another dummy is needed it can be changed by changing DUMMBY_BYTE MACRO
+// Or using spi_master_write( ) with the right parameter
+
+unsigned char spi_master_receive( void ){
+	
+	SPDR = DUMMY_BYTE ;
+ 1b2:	8f ef       	ldi	r24, 0xFF	; 255
+ 1b4:	8f b9       	out	0x0f, r24	; 15
+	
+	while( ! ( SPSR & ( 1 << SPIF )) );
+ 1b6:	77 9b       	sbis	0x0e, 7	; 14
+ 1b8:	fe cf       	rjmp	.-4      	; 0x1b6 <spi_master_receive+0x4>
+	
+	return SPDR ;
+ 1ba:	8f b1       	in	r24, 0x0f	; 15
+}
+ 1bc:	08 95       	ret
+
+000001be <w_register>:
+	if ( !( temp & ( 1 << PWR_UP ) ) ){ return 0 ; }     // ALREADY IN POWERDOWN MODE
+	temp &= ~( 1 << PWR_UP ) ;							 // CLEAR PWR_UP BIT 
+	w_register( temp , REGISTER_CONFIG ) ;				 // WRITE NEW CONFIGURATION
+	return 1 ;                                                  
+
+}
+ 1be:	cf 93       	push	r28
+ 1c0:	c8 2f       	mov	r28, r24
+ 1c2:	aa 98       	cbi	0x15, 2	; 21
+ 1c4:	86 2f       	mov	r24, r22
+ 1c6:	80 62       	ori	r24, 0x20	; 32
+ 1c8:	ef df       	rcall	.-34     	; 0x1a8 <spi_master_write>
+ 1ca:	8c 2f       	mov	r24, r28
+ 1cc:	ed df       	rcall	.-38     	; 0x1a8 <spi_master_write>
+ 1ce:	aa 9a       	sbi	0x15, 2	; 21
+ 1d0:	cf 91       	pop	r28
+ 1d2:	08 95       	ret
+
+000001d4 <r_register>:
+ 1d4:	aa 98       	cbi	0x15, 2	; 21
+ 1d6:	e8 df       	rcall	.-48     	; 0x1a8 <spi_master_write>
+ 1d8:	ec df       	rcall	.-40     	; 0x1b2 <spi_master_receive>
+ 1da:	aa 9a       	sbi	0x15, 2	; 21
+ 1dc:	08 95       	ret
+
+000001de <nrf_configure>:
+ 1de:	ef 92       	push	r14
+ 1e0:	ff 92       	push	r15
+ 1e2:	0f 93       	push	r16
+ 1e4:	1f 93       	push	r17
+ 1e6:	cf 93       	push	r28
+ 1e8:	df 93       	push	r29
+ 1ea:	cd b7       	in	r28, 0x3d	; 61
+ 1ec:	de b7       	in	r29, 0x3e	; 62
+ 1ee:	2b 97       	sbiw	r28, 0x0b	; 11
+ 1f0:	0f b6       	in	r0, 0x3f	; 63
+ 1f2:	f8 94       	cli
+ 1f4:	de bf       	out	0x3e, r29	; 62
+ 1f6:	0f be       	out	0x3f, r0	; 63
+ 1f8:	cd bf       	out	0x3d, r28	; 61
+ 1fa:	e9 82       	std	Y+1, r14	; 0x01
+ 1fc:	fa 82       	std	Y+2, r15	; 0x02
+ 1fe:	0b 83       	std	Y+3, r16	; 0x03
+ 200:	58 87       	std	Y+8, r21	; 0x08
+ 202:	69 87       	std	Y+9, r22	; 0x09
+ 204:	7a 87       	std	Y+10, r23	; 0x0a
+ 206:	8b 87       	std	Y+11, r24	; 0x0b
+ 208:	22 0f       	add	r18, r18
+ 20a:	22 0f       	add	r18, r18
+ 20c:	80 e1       	ldi	r24, 0x10	; 16
+ 20e:	18 9f       	mul	r17, r24
+ 210:	b0 01       	movw	r22, r0
+ 212:	11 24       	eor	r1, r1
+ 214:	62 2b       	or	r22, r18
+ 216:	36 2b       	or	r19, r22
+ 218:	84 2f       	mov	r24, r20
+ 21a:	88 0f       	add	r24, r24
+ 21c:	60 e0       	ldi	r22, 0x00	; 0
+ 21e:	83 2b       	or	r24, r19
+ 220:	ce df       	rcall	.-100    	; 0x1be <w_register>
+ 222:	89 85       	ldd	r24, Y+9	; 0x09
+ 224:	20 e1       	ldi	r18, 0x10	; 16
+ 226:	82 9f       	mul	r24, r18
+ 228:	c0 01       	movw	r24, r0
+ 22a:	11 24       	eor	r1, r1
+ 22c:	9a 85       	ldd	r25, Y+10	; 0x0a
+ 22e:	64 e0       	ldi	r22, 0x04	; 4
+ 230:	89 2b       	or	r24, r25
+ 232:	c5 df       	rcall	.-118    	; 0x1be <w_register>
+ 234:	2b 81       	ldd	r18, Y+3	; 0x03
+ 236:	82 2f       	mov	r24, r18
+ 238:	88 0f       	add	r24, r24
+ 23a:	99 81       	ldd	r25, Y+1	; 0x01
+ 23c:	40 e8       	ldi	r20, 0x80	; 128
+ 23e:	94 9f       	mul	r25, r20
+ 240:	90 01       	movw	r18, r0
+ 242:	11 24       	eor	r1, r1
+ 244:	28 2b       	or	r18, r24
+ 246:	8a 81       	ldd	r24, Y+2	; 0x02
+ 248:	88 0f       	add	r24, r24
+ 24a:	88 0f       	add	r24, r24
+ 24c:	88 0f       	add	r24, r24
+ 24e:	66 e0       	ldi	r22, 0x06	; 6
+ 250:	82 2b       	or	r24, r18
+ 252:	b5 df       	rcall	.-150    	; 0x1be <w_register>
+ 254:	65 e0       	ldi	r22, 0x05	; 5
+ 256:	8b 85       	ldd	r24, Y+11	; 0x0b
+ 258:	b2 df       	rcall	.-156    	; 0x1be <w_register>
+ 25a:	6d e1       	ldi	r22, 0x1D	; 29
+ 25c:	88 85       	ldd	r24, Y+8	; 0x08
+ 25e:	af df       	rcall	.-162    	; 0x1be <w_register>
+ 260:	61 e0       	ldi	r22, 0x01	; 1
+ 262:	80 e0       	ldi	r24, 0x00	; 0
+ 264:	ac df       	rcall	.-168    	; 0x1be <w_register>
+ 266:	62 e0       	ldi	r22, 0x02	; 2
+ 268:	80 e0       	ldi	r24, 0x00	; 0
+ 26a:	a9 df       	rcall	.-174    	; 0x1be <w_register>
+ 26c:	2b 96       	adiw	r28, 0x0b	; 11
+ 26e:	0f b6       	in	r0, 0x3f	; 63
+ 270:	f8 94       	cli
+ 272:	de bf       	out	0x3e, r29	; 62
+ 274:	0f be       	out	0x3f, r0	; 63
+ 276:	cd bf       	out	0x3d, r28	; 61
+ 278:	df 91       	pop	r29
+ 27a:	cf 91       	pop	r28
+ 27c:	1f 91       	pop	r17
+ 27e:	0f 91       	pop	r16
+ 280:	ff 90       	pop	r15
+ 282:	ef 90       	pop	r14
+ 284:	08 95       	ret
+
+00000286 <set_addr>:
+ 286:	9f 92       	push	r9
+ 288:	af 92       	push	r10
+ 28a:	bf 92       	push	r11
+ 28c:	cf 92       	push	r12
+ 28e:	df 92       	push	r13
+ 290:	ef 92       	push	r14
+ 292:	ff 92       	push	r15
+ 294:	0f 93       	push	r16
+ 296:	1f 93       	push	r17
+ 298:	cf 93       	push	r28
+ 29a:	df 93       	push	r29
+ 29c:	b8 2e       	mov	r11, r24
+ 29e:	c2 2f       	mov	r28, r18
+ 2a0:	d3 2f       	mov	r29, r19
+ 2a2:	f4 2e       	mov	r15, r20
+ 2a4:	d5 2e       	mov	r13, r21
+ 2a6:	c6 2e       	mov	r12, r22
+ 2a8:	97 2e       	mov	r9, r23
+ 2aa:	85 e0       	ldi	r24, 0x05	; 5
+ 2ac:	8e 15       	cp	r24, r14
+ 2ae:	60 f1       	brcs	.+88     	; 0x308 <set_addr+0x82>
+ 2b0:	63 e0       	ldi	r22, 0x03	; 3
+ 2b2:	8e ef       	ldi	r24, 0xFE	; 254
+ 2b4:	8e 0d       	add	r24, r14
+ 2b6:	83 df       	rcall	.-250    	; 0x1be <w_register>
+ 2b8:	aa 98       	cbi	0x15, 2	; 21
+ 2ba:	8b 2d       	mov	r24, r11
+ 2bc:	80 62       	ori	r24, 0x20	; 32
+ 2be:	74 df       	rcall	.-280    	; 0x1a8 <spi_master_write>
+ 2c0:	ae 2c       	mov	r10, r14
+ 2c2:	b1 2c       	mov	r11, r1
+ 2c4:	81 e0       	ldi	r24, 0x01	; 1
+ 2c6:	a8 1a       	sub	r10, r24
+ 2c8:	b1 08       	sbc	r11, r1
+ 2ca:	da f0       	brmi	.+54     	; 0x302 <set_addr+0x7c>
+ 2cc:	e1 2c       	mov	r14, r1
+ 2ce:	80 2f       	mov	r24, r16
+ 2d0:	6b df       	rcall	.-298    	; 0x1a8 <spi_master_write>
+ 2d2:	20 2f       	mov	r18, r16
+ 2d4:	31 2f       	mov	r19, r17
+ 2d6:	4c 2f       	mov	r20, r28
+ 2d8:	5d 2f       	mov	r21, r29
+ 2da:	6f 2d       	mov	r22, r15
+ 2dc:	7d 2d       	mov	r23, r13
+ 2de:	8c 2d       	mov	r24, r12
+ 2e0:	99 2d       	mov	r25, r9
+ 2e2:	08 e0       	ldi	r16, 0x08	; 8
+ 2e4:	76 d0       	rcall	.+236    	; 0x3d2 <__lshrdi3>
+ 2e6:	02 2f       	mov	r16, r18
+ 2e8:	13 2f       	mov	r17, r19
+ 2ea:	c4 2f       	mov	r28, r20
+ 2ec:	d5 2f       	mov	r29, r21
+ 2ee:	f6 2e       	mov	r15, r22
+ 2f0:	d7 2e       	mov	r13, r23
+ 2f2:	c8 2e       	mov	r12, r24
+ 2f4:	99 2e       	mov	r9, r25
+ 2f6:	e3 94       	inc	r14
+ 2f8:	8e 2d       	mov	r24, r14
+ 2fa:	90 e0       	ldi	r25, 0x00	; 0
+ 2fc:	a8 16       	cp	r10, r24
+ 2fe:	b9 06       	cpc	r11, r25
+ 300:	34 f7       	brge	.-52     	; 0x2ce <set_addr+0x48>
+ 302:	aa 9a       	sbi	0x15, 2	; 21
+ 304:	81 e0       	ldi	r24, 0x01	; 1
+ 306:	01 c0       	rjmp	.+2      	; 0x30a <set_addr+0x84>
+ 308:	80 e0       	ldi	r24, 0x00	; 0
+ 30a:	df 91       	pop	r29
+ 30c:	cf 91       	pop	r28
+ 30e:	1f 91       	pop	r17
+ 310:	0f 91       	pop	r16
+ 312:	ff 90       	pop	r15
+ 314:	ef 90       	pop	r14
+ 316:	df 90       	pop	r13
+ 318:	cf 90       	pop	r12
+ 31a:	bf 90       	pop	r11
+ 31c:	af 90       	pop	r10
+ 31e:	9f 90       	pop	r9
+ 320:	08 95       	ret
+
+00000322 <nrf_power_up>:
+
+uint8_t nrf_power_up ( void ){
+	
+	uint8_t temp ;
+	
+	temp = r_register( REGISTER_CONFIG ) ;          // READ CONFIG REGISTER
+ 322:	80 e0       	ldi	r24, 0x00	; 0
+ 324:	57 df       	rcall	.-338    	; 0x1d4 <r_register>
+	if ( temp & ( 1 << PWR_UP ) ){ return 0 ; }     // ALREADY IN STANDBY MODE 1 
+ 326:	81 fd       	sbrc	r24, 1
+ 328:	0b c0       	rjmp	.+22     	; 0x340 <nrf_power_up+0x1e>
+	temp |= ( 1 << PWR_UP ) ;                      // SET TO POWER UP 
+	w_register( temp , REGISTER_CONFIG ) ;          // WRITE PWR_UP BIT TO REGISTER 
+ 32a:	60 e0       	ldi	r22, 0x00	; 0
+ 32c:	82 60       	ori	r24, 0x02	; 2
+ 32e:	47 df       	rcall	.-370    	; 0x1be <w_register>
+ 330:	87 eb       	ldi	r24, 0xB7	; 183
+ 332:	9b e0       	ldi	r25, 0x0B	; 11
+ 334:	01 97       	sbiw	r24, 0x01	; 1
+ 336:	f1 f7       	brne	.-4      	; 0x334 <nrf_power_up+0x12>
+ 338:	00 c0       	rjmp	.+0      	; 0x33a <nrf_power_up+0x18>
+ 33a:	00 00       	nop
+	_delay_ms(PWR_UP_SETTLE_TIME);					// POWER UP SETTLE TIME 
+
+	return 1 ;                                      // POWERUP DONE 
+ 33c:	81 e0       	ldi	r24, 0x01	; 1
+ 33e:	08 95       	ret
+uint8_t nrf_power_up ( void ){
+	
+	uint8_t temp ;
+	
+	temp = r_register( REGISTER_CONFIG ) ;          // READ CONFIG REGISTER
+	if ( temp & ( 1 << PWR_UP ) ){ return 0 ; }     // ALREADY IN STANDBY MODE 1 
+ 340:	80 e0       	ldi	r24, 0x00	; 0
+	w_register( temp , REGISTER_CONFIG ) ;          // WRITE PWR_UP BIT TO REGISTER 
+	_delay_ms(PWR_UP_SETTLE_TIME);					// POWER UP SETTLE TIME 
+
+	return 1 ;                                      // POWERUP DONE 
+	
+}
+ 342:	08 95       	ret
+
+00000344 <nrf_tx_write>:
+
+
+void nrf_tx_write ( uint8_t * data_ptr , uint8_t num_bytes , uint8_t ack ){
+ 344:	ef 92       	push	r14
+ 346:	ff 92       	push	r15
+ 348:	0f 93       	push	r16
+ 34a:	1f 93       	push	r17
+ 34c:	cf 93       	push	r28
+ 34e:	7c 01       	movw	r14, r24
+ 350:	06 2f       	mov	r16, r22
+	
+	CS_LOW ;																	// HIGH TO LOW TRANSITION
+ 352:	aa 98       	cbi	0x15, 2	; 21
+
+	spi_master_write( ack ? W_TX_PAYLOAD : W_TX_PAYLOAD_NOACK ) ;				// Send write command to register
+ 354:	41 11       	cpse	r20, r1
+ 356:	02 c0       	rjmp	.+4      	; 0x35c <nrf_tx_write+0x18>
+ 358:	80 eb       	ldi	r24, 0xB0	; 176
+ 35a:	01 c0       	rjmp	.+2      	; 0x35e <nrf_tx_write+0x1a>
+ 35c:	80 ea       	ldi	r24, 0xA0	; 160
+ 35e:	24 df       	rcall	.-440    	; 0x1a8 <spi_master_write>
+	
+	for( uint8_t i = 0 ; i <= num_bytes -1 ; i++ ){
+ 360:	10 e0       	ldi	r17, 0x00	; 0
+ 362:	01 50       	subi	r16, 0x01	; 1
+ 364:	11 09       	sbc	r17, r1
+ 366:	62 f0       	brmi	.+24     	; 0x380 <nrf_tx_write+0x3c>
+ 368:	c0 e0       	ldi	r28, 0x00	; 0
+		spi_master_write ( *( data_ptr + i ) );		
+ 36a:	f7 01       	movw	r30, r14
+ 36c:	ec 0f       	add	r30, r28
+ 36e:	f1 1d       	adc	r31, r1
+ 370:	80 81       	ld	r24, Z
+ 372:	1a df       	rcall	.-460    	; 0x1a8 <spi_master_write>
+	
+	CS_LOW ;																	// HIGH TO LOW TRANSITION
+
+	spi_master_write( ack ? W_TX_PAYLOAD : W_TX_PAYLOAD_NOACK ) ;				// Send write command to register
+	
+	for( uint8_t i = 0 ; i <= num_bytes -1 ; i++ ){
+ 374:	cf 5f       	subi	r28, 0xFF	; 255
+ 376:	8c 2f       	mov	r24, r28
+ 378:	90 e0       	ldi	r25, 0x00	; 0
+ 37a:	08 17       	cp	r16, r24
+ 37c:	19 07       	cpc	r17, r25
+ 37e:	ac f7       	brge	.-22     	; 0x36a <nrf_tx_write+0x26>
+		spi_master_write ( *( data_ptr + i ) );		
+	}
+
+	CS_HIGH ;																	// LOW TO HIGHT END OF COMMAND	
+ 380:	aa 9a       	sbi	0x15, 2	; 21
+	CE_PULSE ;																	// PULSE CE 10 uS
+ 382:	a3 9a       	sbi	0x14, 3	; 20
+ 384:	ab 9a       	sbi	0x15, 3	; 21
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 386:	8d e1       	ldi	r24, 0x1D	; 29
+ 388:	8a 95       	dec	r24
+ 38a:	f1 f7       	brne	.-4      	; 0x388 <nrf_tx_write+0x44>
+ 38c:	00 00       	nop
+ 38e:	ab 98       	cbi	0x15, 3	; 21
+	
+}
+ 390:	cf 91       	pop	r28
+ 392:	1f 91       	pop	r17
+ 394:	0f 91       	pop	r16
+ 396:	ff 90       	pop	r15
+ 398:	ef 90       	pop	r14
+ 39a:	08 95       	ret
+
+0000039c <uart_init>:
+
+
+
+void uart_init( void ){
+	
+	UCSRB = ( 1 << RXEN ) | ( 1 << TXEN ) ; 
+ 39c:	88 e1       	ldi	r24, 0x18	; 24
+ 39e:	8a b9       	out	0x0a, r24	; 10
+	UCSRC = ( 1 << URSEL ) | ( 0B11 << UCSZ0 ) ;
+ 3a0:	86 e8       	ldi	r24, 0x86	; 134
+ 3a2:	80 bd       	out	0x20, r24	; 32
+	UBRRL = 12 ; // 38400 BAUD 
+ 3a4:	8c e0       	ldi	r24, 0x0C	; 12
+ 3a6:	89 b9       	out	0x09, r24	; 9
+ 3a8:	08 95       	ret
+
+000003aa <uart_send>:
+}
+
+
+void uart_send ( unsigned char uart_byte ){
+	
+	UDR = uart_byte ;
+ 3aa:	8c b9       	out	0x0c, r24	; 12
+	
+	while ( !(UCSRA & ( 1 << UDRE ) ) ); // Wait for the buffer to be ready to be written again ;;;
+ 3ac:	5d 9b       	sbis	0x0b, 5	; 11
+ 3ae:	fe cf       	rjmp	.-4      	; 0x3ac <uart_send+0x2>
+	 
+}
+ 3b0:	08 95       	ret
+
+000003b2 <uart_print>:
+
+
+// Prints a string ... pointed to by strptr 
+
+void uart_print( char * strptr ){
+ 3b2:	cf 93       	push	r28
+ 3b4:	df 93       	push	r29
+ 3b6:	ec 01       	movw	r28, r24
+	
+	while ( *(strptr) != 0 ){
+ 3b8:	88 81       	ld	r24, Y
+ 3ba:	88 23       	and	r24, r24
+ 3bc:	29 f0       	breq	.+10     	; 0x3c8 <uart_print+0x16>
+ 3be:	21 96       	adiw	r28, 0x01	; 1
+		
+		uart_send( *(strptr) ); 
+ 3c0:	f4 df       	rcall	.-24     	; 0x3aa <uart_send>
+
+// Prints a string ... pointed to by strptr 
+
+void uart_print( char * strptr ){
+	
+	while ( *(strptr) != 0 ){
+ 3c2:	89 91       	ld	r24, Y+
+ 3c4:	81 11       	cpse	r24, r1
+ 3c6:	fc cf       	rjmp	.-8      	; 0x3c0 <uart_print+0xe>
+		
+		uart_send( *(strptr) ); 
+		++strptr ; 
+	}
+	
+}
+ 3c8:	df 91       	pop	r29
+ 3ca:	cf 91       	pop	r28
+ 3cc:	08 95       	ret
+
+000003ce <__ashrdi3>:
+ 3ce:	97 fb       	bst	r25, 7
+ 3d0:	10 f8       	bld	r1, 0
+
+000003d2 <__lshrdi3>:
+ 3d2:	16 94       	lsr	r1
+ 3d4:	00 08       	sbc	r0, r0
+ 3d6:	0f 93       	push	r16
+ 3d8:	08 30       	cpi	r16, 0x08	; 8
+ 3da:	98 f0       	brcs	.+38     	; 0x402 <__LOCK_REGION_LENGTH__+0x2>
+ 3dc:	08 50       	subi	r16, 0x08	; 8
+ 3de:	23 2f       	mov	r18, r19
+ 3e0:	34 2f       	mov	r19, r20
+ 3e2:	45 2f       	mov	r20, r21
+ 3e4:	56 2f       	mov	r21, r22
+ 3e6:	67 2f       	mov	r22, r23
+ 3e8:	78 2f       	mov	r23, r24
+ 3ea:	89 2f       	mov	r24, r25
+ 3ec:	90 2d       	mov	r25, r0
+ 3ee:	f4 cf       	rjmp	.-24     	; 0x3d8 <__lshrdi3+0x6>
+ 3f0:	05 94       	asr	r0
+ 3f2:	97 95       	ror	r25
+ 3f4:	87 95       	ror	r24
+ 3f6:	77 95       	ror	r23
+ 3f8:	67 95       	ror	r22
+ 3fa:	57 95       	ror	r21
+ 3fc:	47 95       	ror	r20
+ 3fe:	37 95       	ror	r19
+ 400:	27 95       	ror	r18
+ 402:	0a 95       	dec	r16
+ 404:	aa f7       	brpl	.-22     	; 0x3f0 <__lshrdi3+0x1e>
+ 406:	0f 91       	pop	r16
+ 408:	08 95       	ret
+
+0000040a <_exit>:
+ 40a:	f8 94       	cli
+
+0000040c <__stop_program>:
+ 40c:	ff cf       	rjmp	.-2      	; 0x40c <__stop_program>
